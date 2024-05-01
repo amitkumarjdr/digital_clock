@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<style type="text/css">
+		.clock{
+			width: 500px;
+			background: black;
+			color: white;
+			border: 4px double white;
+			margin: auto;
+			text-align: center;
+			padding: 20px 5px;
+
+		}
+		.time{
+			font-size: 40px;
+		}
+		.Date{
+			font-size: 30px;
+			padding-top: 20px;
+			color: yellow;
+		}
+	</style>
+</head>
+<body>
+	<div class="clock">
+		<div class="time">00 : 00 : 00 : 00  </div>
+		<div class="Date">0000000</div>
+	</div>
+
+</body>
+<script type="text/javascript">
+	let time = document.querySelector('.time');
+	let date = document.querySelector('.Date');
+
+	const timeFunction = ()=>{
+		let currentTime = new Date();
+		let currentDate = currentTime.toDateString();
+		let hours = currentTime.getHours();
+		let minutes = currentTime.getMinutes();
+		let seconds = currentTime.getSeconds();
+		//let milliseconds = currentTime.getMilliseconds();
+		let ampm = (hours > 12) ? 'PM':'AM'
+		hours = (hours > 12) ? hours - 12 : hours;
+		hours = (hours < 10) ? '0'+hours : hours
+		seconds = (seconds < 10) ? '0'+seconds : seconds;
+		minutes = (minutes < 10) ? '0'+minutes : minutes;
+
+		date.innerHTML = currentDate;
+		time.innerHTML = `${hours} : ${minutes} : ${seconds} : ${ampm}`
+
+	}
+
+	timeFunction();
+	setInterval(timeFunction)
+
+
+	let days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+	let din = new Date;
+	let x = din.getDay();
+	console.log(days[x])
+</script>
+</html>
